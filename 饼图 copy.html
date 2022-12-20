@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 800px;height: 800px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      var option = {
+  series: {
+    type: 'sankey',
+    layout: 'none',
+    emphasis: {
+      focus: 'adjacency'
+    },
+    data: [
+      {
+        name: '男'
+      },
+      {
+        name: '女'
+      },
+      {
+        name: '游戏'
+      },
+      {
+        name: '运动'
+      },
+      {
+        name: '购物'
+      },
+      {
+        name: '吃'
+      }
+    ],
+    links: [
+      {
+        source: '男',
+        target: '游戏',
+        value: 5
+      },
+      {
+        source: '男',
+        target: '运动',
+        value: 3
+      },
+      {
+        source: '女',
+        target: '游戏',
+        value: 3
+      },
+      {
+        source: '女',
+        target: '吃',
+        value: 3
+      },
+      {
+        source: '游戏',
+        target: '吃',
+        value: 1
+      },
+      {
+        source: '运动',
+        target: '吃',
+        value: 2
+      }
+    ]
+  }
+};
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>

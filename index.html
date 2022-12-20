@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ECharts</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 1500px;height:700px;margin:0 auto;background-color: blanchedalmond;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'),'infographic');
+
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+    text: '中国十个最大的城市公园',
+    left:600,
+    top:20,
+    textStyle: {
+      fontSize:30
+    },
+  },
+  tooltip:{
+    trigger:'item',
+    formatter:"{a} \n{b} : {c} ({d}%)"
+  },
+  legend: {
+    top: 'bottom'
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      mark: { show: false },
+      dataView: { show: false, readOnly: false },
+      restore: { show: true },
+      saveAsImage: { show: false }
+    }
+  },
+  color:['red','orange','green','yellow','blue','purple','pink','white','olive','brown'],
+  series: [
+    {
+      name: 'name',
+      type: 'pie',
+      radius: [30, 200],
+      center: ['50%', '50%'],
+      roseType: 'area',
+      itemStyle: {
+        borderRadius: 0,
+      },
+      markline:{
+        data:[{
+          type:'average'
+        }]
+      },
+      label:{
+        show:true,
+        color:'red',
+        fontweight:'blod',
+        formatter:'{b}  占比: {d}'
+      },
+      data: [
+        { value: 30, name: '颐和园\n309公顷' },
+        { value: 60, name: '武汉东湖公园\n8800公顷' },
+        { value: 28, name: '瘦西湖公园\n100公顷' },
+        { value: 35, name: '玄武湖公园\n502公顷' },
+        { value: 25, name: '大明湖公园\n81公顷' },
+        { value: 23, name: '北京北海公园\n68.2公顷' },
+        { value: 31, name: '北京香山公园\n160公顷' },
+        { value: 50, name: '惠州西湖公园\n2091公顷' },
+        { value: 15, name: '蠡园公园\n5.2公顷' },
+        { value: 17, name: '趵突泉公园\n10.5公顷' }
+      ]
+    }
+  ]
+};
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
